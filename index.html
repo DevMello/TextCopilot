@@ -3,16 +3,31 @@
   <head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
-    <link href="./styles.css" rel="stylesheet">
+    <link href="./output.css" rel="stylesheet">
     <title>Hello World!</title>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
-
+    <main class="flex justify-center items-center h-screen">
+      <div class="w-full max-w-lg bg-gray-700 rounded-lg shadow-lg p-6 text-center">
+        <h1 class="text-white py-4 text-3xl">Text Copilot</h1>
+        <select class="select select-bordered w-full max-w-xs text-white mb-4">
+        <option disabled selected>Select</option>
+        <option>Han Solo</option>
+        <option>Greedo</option>
+        </select>
+        <div class="relative" >
+        <textarea id="inputText" class="textarea textarea-info text-white w-full max-w-lg" placeholder="Input Text to be corrected"></textarea>
+        </div>
+        
+        <button
+          class="px-6 py-2 bg-blue-500 text-white mt-4 rounded-lg hover:bg-blue-600 focus:outline-none"
+          on:click={getData}
+        >
+          Get Data
+        </button>
+        
+      </div>
+      </main>
     <!-- You can also require other files to run in this process -->
     <script src="./renderer.js"></script>
   </body>

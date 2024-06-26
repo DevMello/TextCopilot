@@ -1,12 +1,13 @@
 {
-  "name": "electron-quick-start",
+  "name": "text-copilot",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "A minimal AI Text Copilot",
   "main": "main.js",
+  "author": "DevMello",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com",
   "keywords": [
     "Electron",
     "quick",
@@ -14,9 +15,13 @@
     "tutorial",
     "demo"
   ],
-  "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^31.0.2"
+    "daisyui": "^4.12.8",
+    "electron": "^31.0.2",
+    "tailwindcss": "^3.4.4"
+  },
+  "dependencies": {
+    "ollama": "^0.5.2"
   }
 }
