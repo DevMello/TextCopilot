@@ -8378,10 +8378,6 @@ html:has(.drawer-open.drawer-open) {
   visibility: visible;
 }
 
-.\!visible {
-  visibility: visible !important;
-}
-
 .invisible {
   visibility: hidden;
 }
@@ -9591,6 +9587,16 @@ html:has(.drawer-open.drawer-open) {
   background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity)));
 }
 
+.bg-gray-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+}
+
+.bg-gray-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
+}
+
 .decoration-slice {
   -webkit-box-decoration-break: slice;
           box-decoration-break: slice;
@@ -9779,6 +9785,11 @@ html:has(.drawer-open.drawer-open) {
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .font-bold {

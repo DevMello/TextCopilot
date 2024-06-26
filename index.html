@@ -4,16 +4,29 @@
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <link href="./output.css" rel="stylesheet">
-    <title>Hello World!</title>
+    <title>Text Copilot</title>
   </head>
   <body>
+
+    <dialog id="error" class="modal">
+      <div class="modal-box">
+        <h3 class="text-lg font-bold">Error!</h3>
+        <p class="py-4">No Models Found or Unable to access Ollama server at default endpoint</p>
+        <p id="errorText"></p>
+        <div class="modal-action">
+          <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
     <main class="flex justify-center items-center h-screen">
       <div class="w-full max-w-lg bg-gray-700 rounded-lg shadow-lg p-6 text-center">
         <h1 class="text-white py-4 text-3xl">Text Copilot</h1>
-        <select class="select select-bordered w-full max-w-xs text-white mb-4">
+        <select class="select select-bordered w-full max-w-xs text-white mb-4" id="options">
         <option disabled selected>Select</option>
-        <option>Han Solo</option>
-        <option>Greedo</option>
         </select>
         <div class="relative" >
         <textarea id="inputText" class="textarea textarea-info text-white w-full max-w-lg" placeholder="Input Text to be corrected"></textarea>
@@ -22,7 +35,7 @@
         <button
           class="px-6 py-2 bg-blue-500 text-white mt-4 rounded-lg hover:bg-blue-600 focus:outline-none" id="getDataButton"
         >
-          Get Data
+          Fix!
         </button>
         
       </div>

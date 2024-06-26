@@ -16,17 +16,24 @@ Return only the corrected text, don't include a preamble and do not include any 
 
 document.addEventListener("DOMContentLoaded", async () => {
     console.log("Hello from renderer.js");
+    document.getElementById('getDataButton').addEventListener('click', getData);
 
     try {
-        models = await ollama.list();
+        models = await ollama.list(0);
         console.log("Models fetched:", models.models);
         populateSelect(models.models);
+        
     } catch (error) {
+        document.getElementById('error').showModal();
+        document.getElementById('options').disabled = true;
+        document.getElementById('getDataButton').disabled = true;
+        document.getElementById('getDataButton').classList.remove('bg-blue-500');
+        document.getElementById('getDataButton').classList.add('bg-gray-500');
+        document.getElementById('inputText').disabled = true;
+        document.getElementById('errorText').textContent = error;
         console.error("Error fetching models:", error);
     }
-
-    const getDataButton = document.getElementById('getDataButton');
-    getDataButton.addEventListener('click', getData);
+    
 });
 
 function populateSelect(models) {
