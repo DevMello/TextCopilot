@@ -11,7 +11,20 @@
     <dialog id="error" class="modal">
       <div class="modal-box">
         <h3 class="text-lg font-bold">Error!</h3>
-        <p class="py-4">No Models Found or Unable to access Ollama server at default endpoint</p>
+        <p id="errorText" class="py-4"></p>
+        <div class="modal-action">
+          <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog id="response" class="modal">
+      <div class="modal-box">
+        <h3 class="text-lg font-bold">Error!</h3>
+        <p class="py-4">Something went wrong while trying to get a response from your model. Is your Ollama set up properly?</p>
         <p id="errorText"></p>
         <div class="modal-action">
           <form method="dialog">

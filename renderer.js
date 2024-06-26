@@ -1,9 +1,6 @@
 const { Ollama } = require("ollama");
 
 const ollama = new Ollama();
-let models = [];
-
-
 
 const PROMPT_TEMPLATE = `
 Fix all typos and casing and punctuation in this text, but preserve all new line characters:
@@ -19,22 +16,32 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById('getDataButton').addEventListener('click', getData);
 
     try {
-        models = await ollama.list(0);
+        let models = await ollama.list(0);
         console.log("Models fetched:", models.models);
+        if(models.models.length === 0) {
+            document.getElementById('errorText').textContent = "No models found. Please try again later after installing some.";
+            disable();
+            return;
+        }
         populateSelect(models.models);
         
     } catch (error) {
-        document.getElementById('error').showModal();
-        document.getElementById('options').disabled = true;
-        document.getElementById('getDataButton').disabled = true;
-        document.getElementById('getDataButton').classList.remove('bg-blue-500');
-        document.getElementById('getDataButton').classList.add('bg-gray-500');
-        document.getElementById('inputText').disabled = true;
-        document.getElementById('errorText').textContent = error;
+        document.getElementById('errorText').textContent = "No Models Found or Unable to access Ollama server at default endpoint: " + error;
+        disable();
         console.error("Error fetching models:", error);
     }
     
 });
+
+function disable() {
+    document.getElementById('error').showModal();
+    document.getElementById('options').disabled = true;
+    document.getElementById('getDataButton').disabled = true;
+    document.getElementById('getDataButton').classList.remove('bg-blue-500');
+    document.getElementById('getDataButton').classList.add('bg-gray-500');
+    document.getElementById('inputText').disabled = true;
+    
+}
 
 function populateSelect(models) {
     const selectElement = document.querySelector('.select');
@@ -58,20 +65,19 @@ function populateSelect(models) {
 async function getData() {
     const selectElement = document.querySelector('.select');
     const selectedOption = selectElement.options[selectElement.selectedIndex];
-    if (selectedOption) {
-        console.log("Selected option:", selectedOption.value);
-        
-    } else {
-        console.log("No option selected.");
-    }
-
     const inputTextArea = document.getElementById('inputText');
     const inputValue = inputTextArea.value.trim();
 
-    console.log("Input Value:", inputValue);
 
     if(selectedOption.value === "Select") {
-        console.log("No model selected");
+        document.getElementById('error').showModal();
+        document.getElementById('errorText').textContent = "Please select a model to get the data from.";
+        return;
+    }
+
+    if(inputValue.length === 0) {
+        document.getElementById('error').showModal();
+        document.getElementById('errorText').textContent = "Please enter some text to get the data.";
         return;
     }
 
@@ -86,6 +92,8 @@ async function getData() {
           }
     } catch (error) {
         inputTextArea.value = oldValue;
+        document.getElementById('error').showModal();
+        document.getElementById('errorText').textContent = "Error fetching response:\n" + error;
         console.error("Error fetching response:", error);
     }
 }

@@ -8577,6 +8577,10 @@ html:has(.drawer-open.drawer-open) {
   height: 100vh;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .w-\[this-is\\\\\] {
   width: this-is\\;
 }
