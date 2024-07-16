@@ -16,8 +16,8 @@ importers:
         specifier: ^4.12.8
         version: 4.12.8(postcss@8.4.38)
       electron:
-        specifier: ^31.0.2
-        version: 31.1.0
+        specifier: ^31.2.1
+        version: 31.2.1
       tailwindcss:
         specifier: ^3.4.4
         version: 3.4.4
@@ -229,8 +229,8 @@ packages:
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
-  electron@31.1.0:
-    resolution: {integrity: sha512-TBOwqLxSxnx6+pH6GMri7R3JPH2AkuGJHfWZS0p1HsmN+Qr1T9b0IRJnnehSd/3NZAmAre4ft9Ljec7zjyKFJA==}
+  electron@31.2.1:
+    resolution: {integrity: sha512-g3CLKjl4yuXt6VWm/KpgEjYYhFiCl19RgUn8lOC8zV/56ZXAS3+mqV4wWzicE/7vSYXs6GRO7vkYRwrwhX3Gaw==}
     engines: {node: '>= 12.20.55'}
     hasBin: true
 
@@ -957,7 +957,7 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
-  electron@31.1.0:
+  electron@31.2.1:
     dependencies:
       '@electron/get': 2.0.3
       '@types/node': 20.14.9
